@@ -1,0 +1,45 @@
+minimal react thing mostly for testing tooling.
+
+install npx(so you need npm 1st)
+npm install -g npx
+
+and you need a recent node, in this case using nvm
+nvm install node
+
+npx create-react-app hello-react
+cd hello-react
+npm start
+
+okay, so then you get stuff on port 3000. very well.
+
+so, now i want a production build
+
+npm run build
+
+test the static build
+
+  npm install -g serve
+  serve -s build
+
+okay, this also worked. funnily the build dir for this hello world is
+200Mb. oh tempora o mores
+
+a .git is also created
+
+clean
+rm -rf node_modules  build
+
+okay, fine and dandy.
+now i want a dockerfile that builds the thing, and then runs it with
+nginx. 
+
+i want the "as builder" syntax, so i guess i need a newer docker than
+1.13.
+
+i had to do https://docs.docker.com/install/linux/docker-ce/fedora/
+also, i needed the test channel to get pkgs for fc 30. fantastic.
+
+run the thing on port 5000
+sudo docker run -it  -p 5000:80 2bbb5389dbb1
+
+okay, next thing is openshift.
